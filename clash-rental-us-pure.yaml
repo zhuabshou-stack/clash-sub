@@ -1,4 +1,4 @@
-# Clash Meta / mihomo 最小配置 — 仅出租节点「AWS美国-出租纯净」
+# Clash Meta / mihomo 最小配置 — 仅出租节点「美国-出租纯净」
 # 导入后选该节点即可；不要与主人自用节点混用
 # 入口 54.71.51.243:443 Reality Vision → 出口美国纯净 ISP
 mixed-port: 7890
@@ -15,7 +15,7 @@ dns:
     - 1.1.1.1
 
 proxies:
-  - name: "AWS美国-出租纯净"
+  - name: "美国-出租纯净"
     type: vless
     server: 54.71.51.243
     port: 443
@@ -34,7 +34,7 @@ proxy-groups:
   - name: PROXY
     type: select
     proxies:
-      - "AWS美国-出租纯净"
+      - "美国-出租纯净"
       - DIRECT
 
 rules:
