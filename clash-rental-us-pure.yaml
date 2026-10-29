@@ -1,0 +1,41 @@
+# Clash Meta / mihomo 最小配置 — 仅出租节点「AWS美国-出租纯净」
+# 导入后选该节点即可；不要与主人自用节点混用
+# 入口 54.71.51.243:443 Reality Vision → 出口美国纯净 ISP
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+
+proxies:
+  - name: "AWS美国-出租纯净"
+    type: vless
+    server: 54.71.51.243
+    port: 443
+    uuid: 3447fe7d-c5a2-4dbb-983b-960dc08ee122
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.microsoft.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: zyTOrYSLMmN8aBb_-QWGr58VkDR-9L80AwCzpxeFTSY
+      short-id: 7c59504333892d97
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - "AWS美国-出租纯净"
+      - DIRECT
+
+rules:
+  - MATCH,PROXY
