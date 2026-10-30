@@ -1,6 +1,7 @@
 # Clash Meta / mihomo 最小配置 — 仅出租节点「美国-出租纯净」
 # 导入后选该节点即可；不要与主人自用节点混用
 # 入口 54.71.51.243:443 Reality Vision → 出口美国纯净 ISP
+# 2026-10-30: udp=false + DoH — Proxy-Seller SOCKS 拒 UDP ASSOCIATE(code=48)，避免 fake-ip DNS 假死
 mixed-port: 7890
 allow-lan: false
 mode: rule
@@ -11,8 +12,11 @@ dns:
   enable: true
   enhanced-mode: fake-ip
   nameserver:
-    - 8.8.8.8
-    - 1.1.1.1
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
 
 proxies:
   - name: "美国-出租纯净"
@@ -22,7 +26,7 @@ proxies:
     uuid: 3447fe7d-c5a2-4dbb-983b-960dc08ee122
     network: tcp
     tls: true
-    udp: true
+    udp: false
     flow: xtls-rprx-vision
     servername: www.microsoft.com
     client-fingerprint: chrome
