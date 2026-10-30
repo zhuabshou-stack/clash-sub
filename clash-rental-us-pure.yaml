@@ -1,7 +1,6 @@
-# 日本-出租纯净 · Clash Meta
-# Entry Japan 69.8.131.186 Reality → exit pure ISP 161.77.1.179
-# Updated 2026-10-30 13:45 Africa/Abidjan(UTC+0)
-# 导入后选「日本-出租纯净」；udp=false + DoH（纯净 SOCKS 拒 UDP）
+# 美国-出租纯净 · Clash Meta
+# Entry Oregon 54.71.51.243 Reality → exit pure ISP 161.77.1.179
+# Restored US-entry-only 2026-10-30 13:51 Africa/Abidjan(UTC+0); Japan→US relay removed
 mixed-port: 7890
 allow-lan: false
 mode: rule
@@ -19,24 +18,24 @@ dns:
     - https://dns.google/dns-query
     - https://1.1.1.1/dns-query
 proxies:
-  - name: 日本-出租纯净
+  - name: 美国-出租纯净
     type: vless
-    server: 69.8.131.186
+    server: 54.71.51.243
     port: 443
     uuid: 3a819840-2844-436c-8650-ac6b11f70660
     network: tcp
     udp: false
     tls: true
     flow: xtls-rprx-vision
-    servername: yahoo.co.jp
+    servername: www.microsoft.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: oLV3e5Mcx9ZibzR4zr_2Aovb0lh8EsDZ3sVpZvoXDSo
-      short-id: "178b8065"
+      public-key: zyTOrYSLMmN8aBb_-QWGr58VkDR-9L80AwCzpxeFTSY
+      short-id: "7c59504333892d97"
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
-      - 日本-出租纯净
+      - 美国-出租纯净
 rules:
   - MATCH,PROXY
