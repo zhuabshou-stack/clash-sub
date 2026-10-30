@@ -1,8 +1,8 @@
 # Clash Meta / mihomo 最小配置 — 仅出租节点「美国-出租纯净」
 # 导入后选该节点即可；不要与主人自用节点混用
 # 入口 54.71.51.243:443 Reality Vision → 出口美国纯净 ISP
+# ROTATED 2026-10-30 13:38 UTC — new us-rental-pure UUID (old 3447fe7d leaked/abused)
 # 2026-10-30: udp=false + DoH — Proxy-Seller SOCKS 拒 UDP ASSOCIATE(code=48)，避免 fake-ip DNS 假死
-# RESTORED 2026-10-30 — us-rental-pure UUID back on Oregon
 mixed-port: 7890
 allow-lan: false
 mode: rule
@@ -24,7 +24,7 @@ proxies:
     type: vless
     server: 54.71.51.243
     port: 443
-    uuid: 3447fe7d-c5a2-4dbb-983b-960dc08ee122
+    uuid: 3a819840-2844-436c-8650-ac6b11f70660
     network: tcp
     tls: true
     udp: false
