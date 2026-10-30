@@ -1,46 +1,42 @@
-# Clash Meta / mihomo 最小配置 — 仅出租节点「美国-出租纯净」
-# 导入后选该节点即可；不要与主人自用节点混用
-# 入口 54.71.51.243:443 Reality Vision → 出口美国纯净 ISP
-# ROTATED 2026-10-30 13:38 UTC — new us-rental-pure UUID (old 3447fe7d leaked/abused)
-# 2026-10-30: udp=false + DoH — Proxy-Seller SOCKS 拒 UDP ASSOCIATE(code=48)，避免 fake-ip DNS 假死
+# 日本-出租纯净 · Clash Meta
+# Entry Japan 69.8.131.186 Reality → exit pure ISP 161.77.1.179
+# Updated 2026-10-30 13:45 Africa/Abidjan(UTC+0)
+# 导入后选「日本-出租纯净」；udp=false + DoH（纯净 SOCKS 拒 UDP）
 mixed-port: 7890
 allow-lan: false
 mode: rule
 log-level: info
 ipv6: false
-
 dns:
   enable: true
+  ipv6: false
   enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
   nameserver:
     - https://dns.google/dns-query
-    - https://cloudflare-dns.com/dns-query
-  fallback:
     - https://1.1.1.1/dns-query
-    - https://8.8.8.8/dns-query
-
+  fallback:
+    - https://dns.google/dns-query
+    - https://1.1.1.1/dns-query
 proxies:
-  - name: "美国-出租纯净"
+  - name: 日本-出租纯净
     type: vless
-    server: 54.71.51.243
+    server: 69.8.131.186
     port: 443
     uuid: 3a819840-2844-436c-8650-ac6b11f70660
     network: tcp
-    tls: true
     udp: false
+    tls: true
     flow: xtls-rprx-vision
-    servername: www.microsoft.com
+    servername: yahoo.co.jp
     client-fingerprint: chrome
     reality-opts:
-      public-key: zyTOrYSLMmN8aBb_-QWGr58VkDR-9L80AwCzpxeFTSY
-      short-id: 7c59504333892d97
-
+      public-key: oLV3e5Mcx9ZibzR4zr_2Aovb0lh8EsDZ3sVpZvoXDSo
+      short-id: "178b8065"
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
-      - "美国-出租纯净"
-      - DIRECT
-
+      - 日本-出租纯净
 rules:
   - MATCH,PROXY
