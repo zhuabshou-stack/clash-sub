@@ -1,19 +1,46 @@
-# REVOKED 2026-10-30 — 美国-出租纯净 已吊销
-# 节点 UUID 已从 Oregon sing-box 删除；此订阅不可用。
-# 请删除本订阅；旧 vless/clash 配置均已失效。
+# Clash Meta / mihomo 最小配置 — 仅出租节点「美国-出租纯净」
+# 导入后选该节点即可；不要与主人自用节点混用
+# 入口 54.71.51.243:443 Reality Vision → 出口美国纯净 ISP
+# 2026-10-30: udp=false + DoH — Proxy-Seller SOCKS 拒 UDP ASSOCIATE(code=48)，避免 fake-ip DNS 假死
+# RESTORED 2026-10-30 — us-rental-pure UUID back on Oregon
 mixed-port: 7890
 allow-lan: false
 mode: rule
-log-level: warning
+log-level: info
 ipv6: false
 
-proxies: []
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+
+proxies:
+  - name: "美国-出租纯净"
+    type: vless
+    server: 54.71.51.243
+    port: 443
+    uuid: 3447fe7d-c5a2-4dbb-983b-960dc08ee122
+    network: tcp
+    tls: true
+    udp: false
+    flow: xtls-rprx-vision
+    servername: www.microsoft.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: zyTOrYSLMmN8aBb_-QWGr58VkDR-9L80AwCzpxeFTSY
+      short-id: 7c59504333892d97
 
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
+      - "美国-出租纯净"
       - DIRECT
 
 rules:
-  - MATCH,DIRECT
+  - MATCH,PROXY
