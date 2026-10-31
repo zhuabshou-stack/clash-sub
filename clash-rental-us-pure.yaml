@@ -1,4 +1,4 @@
-# 出租专用；仅包含现有出租身份。未发布，不改变已发出的固定 VLESS 链接。
+# 出租专用；仅包含现有出租身份。HTTPS 出租订阅；不改变已发出的固定 VLESS 链接。
 # IPv6 入口已在当前电脑实测；原 IPv4 入口当前本地不可达。
 # 双入口/自动回退不会使 IPv4-only 网络自动获得可达入口。
 mixed-port: 7890
@@ -13,9 +13,6 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   nameserver:
-    - https://dns.google/dns-query
-    - https://1.1.1.1/dns-query
-  fallback:
     - https://dns.google/dns-query
     - https://1.1.1.1/dns-query
 proxies:
